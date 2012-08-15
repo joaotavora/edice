@@ -1,3 +1,29 @@
+;;; edice.el --- Really, why would you want to roll dice in Emacs?
+
+;; Copyright (C) 2012  João Távora
+
+;; Author: João Távora <joaotavora@gmail.com>
+;; Keywords: games
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; To start just use M-x roll-dice. Numbers in `edice-mode' roll that
+;; number of dice
+
+;;; Code:
 ;; -*- lexical-binding: t -*-
 (defun edice-p (&rest numbers)
   "Return a function of one arg for displaying a dot.
@@ -99,4 +125,9 @@ Function will return non-nil when that arg is in NUMBERS"
           (insert (edice-roll-dice-string (pop rolls))))
         (sit-for (setq delay (* 1.1 delay)))))))
 
-(edice-roll 2)
+(provide 'edice)
+
+;; Local Variables:
+;; lexical-binding: t
+;; End:
+;;; edice.el ends here
