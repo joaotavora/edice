@@ -88,6 +88,12 @@ Function will return non-nil when that arg is in NUMBERS"
   (setq buffer-read-only t)
   (set (make-local-variable 'global-hl-line-mode) nil))
 
+(defvar edice-mode-map (let ((map (make-sparse-keymap)))
+                         (loop for i from 1 to 9
+                               do (define-key map (format "%d" i)
+                                    `(lambda () (interactive) (edice-roll ,i))))
+                         map))
+
 (defun edice-random (ndice nrolls)
   (let (collected
         stopped)
