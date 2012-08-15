@@ -1,0 +1,14 @@
+# Installation and usage
+
+Just `(require 'edice)` and start with `M-x edice-roll`. Numbers keys
+in `edice-mode` roll that number of nice.
+
+[![Screenshot][ss]][citadel]
+
+# Really, why would you want to roll dice in Emacs?
+
+[![Image][citadel_img]][citadel]
+
+[ss]: https://raw.github.com/capitaomorte/edice/master/screenshot.png
+[citadel]: http://en.wikipedia.org/wiki/The_Citadel_of_Chaos
+[citadel_img]: http://upload.wikimedia.org/wikipedia/en/c/c8/The_citadel_of_chaos.jpg
