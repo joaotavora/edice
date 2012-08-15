@@ -38,21 +38,37 @@ Function will return non-nil when that arg is in NUMBERS"
                       (,(edice-dot-fn 6)       ,(edice-dot-fn 1 5 3) ,(edice-dot-fn 6))
                       (,(edice-dot-fn 3 4 5 6) ,(edice-dot-fn 2)     ,(edice-dot-fn 4 5 6))))
 
-(defvar edice-color "black")
+(defgroup edice nil
+  "Customization group for edice."
+  :group 'games)
+
+(defface edice-rolling-face '((default :inherit font-lock-warning-face)
+                              (((class color)) :inverse-video t :weight normal ))
+  "Edice face for  when the dice are rolling"
+  :group 'edice)
+
+(defface edice-stopped-face '((default :inherit font-lock-warning-face)
+                              (((class color)) :inverse-video t :weight bold))
+  "Edice face for when the dice have stopped rolling"
+  :group 'edice)
+
+(defface edice-history-face '((default :inherit default)
+                              (((class color)) :inverse-video t))
+  "Edice face for roll history"
+  :group 'edice)
+
+(defvar edice-stopped-face-name 'edice-stopped-face)
 
 (defun edice-roll-dice-string-1 (number)
-  (if (minusp number)
-      (setq number (abs number)
-            edice-color (or edice-color
-                            "brown4")))
   (mapcar #'(lambda (line)
+              (message "using %s" edice-stopped-face-name)
               (propertize (concat "|"
                                   (mapconcat #'(lambda (dot-fn)
-                                                 (if (funcall dot-fn number) "x" " "))
+                                                 (if (funcall dot-fn (abs number)) "x" " "))
                                              line
                                              " ")
                                   "|")
-                          'face `((:background ,edice-color :foreground "white"))))
+                          'face (if (plusp number) 'edice-rolling-face edice-stopped-face-name)))
           edice-array))
 
 (defun edice-roll-dice-string (roll)
@@ -114,7 +130,7 @@ Function will return non-nil when that arg is in NUMBERS"
       (cond (edice-last-roll
              (goto-char edice-last-roll-point)
              (delete-region (point) (point-max))
-             (let ((edice-color "black"))
+             (let ((edice-stopped-face-name 'edice-history-face))
                (insert (edice-roll-dice-string edice-last-roll))))
             (t
              (goto-char (point-max))))
@@ -124,7 +140,7 @@ Function will return non-nil when that arg is in NUMBERS"
         (delete-region (point) (point-max))
         (save-excursion
           (setq edice-last-roll-point (point))
-          (insert (edice-roll-dice-string (pop rolls))))
+          (insert (edice-roll-dice-string (setq edice-last-roll (pop rolls)))))
         (sit-for (setq delay (* 1.1 delay)))))))
 
 (provide 'edice)
