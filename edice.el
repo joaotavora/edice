@@ -24,19 +24,19 @@
 ;; number of dice
 
 ;;; Code:
-(defun edice-p (&rest numbers)
 (eval-when-compile
   (setq lexical-binding t))
 
+(defun edice-dot-fn (&rest numbers)
   "Return a function of one arg for displaying a dot.
 
 Function will return non-nil when that arg is in NUMBERS"
   (lambda (num)
     (memq num numbers)))
 
-(defvar edice-array `((,(edice-p 4 5 6)   ,(edice-p 2)     ,(edice-p 3 4 5 6))
-                      (,(edice-p 6)       ,(edice-p 1 5 3) ,(edice-p 6))
-                      (,(edice-p 3 4 5 6) ,(edice-p 2)     ,(edice-p 4 5 6))))
+(defvar edice-array `((,(edice-dot-fn 4 5 6)   ,(edice-dot-fn 2)     ,(edice-dot-fn 3 4 5 6))
+                      (,(edice-dot-fn 6)       ,(edice-dot-fn 1 5 3) ,(edice-dot-fn 6))
+                      (,(edice-dot-fn 3 4 5 6) ,(edice-dot-fn 2)     ,(edice-dot-fn 4 5 6))))
 
 (defvar edice-color "black")
 
