@@ -8,6 +8,9 @@ in `edice-mode` roll that number of nice.
 # Really, why would you want to roll dice in Emacs?
 
 [![Image][citadel_img]][citadel]
+![Image](http://upload.wikimedia.org/wikipedia/en/7/7e/Ff5puffin.jpg)
+![Image](http://upload.wikimedia.org/wikipedia/en/c/c9/Ff22puffin.jpg) 
+![Image](http://upload.wikimedia.org/wikipedia/en/2/2d/Ff3puffin.jpg)
 
 [ss]: https://raw.github.com/capitaomorte/edice/master/screenshot.png
 [citadel]: http://en.wikipedia.org/wiki/The_Citadel_of_Chaos
