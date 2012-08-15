@@ -24,8 +24,10 @@
 ;; number of dice
 
 ;;; Code:
-;; -*- lexical-binding: t -*-
 (defun edice-p (&rest numbers)
+(eval-when-compile
+  (setq lexical-binding t))
+
   "Return a function of one arg for displaying a dot.
 
 Function will return non-nil when that arg is in NUMBERS"
