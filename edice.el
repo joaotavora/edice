@@ -109,7 +109,8 @@ Function will return non-nil when that arg is in NUMBERS"
 (defvar edice-last-roll-point nil)
 (defvar edice-last-roll nil)
 (defun edice-roll (&optional howmany)
-  (interactive "nHow many dice?")
+  "Roll some dice!"
+  (interactive "nHow many dice? ")
   (with-current-buffer (pop-to-buffer (get-buffer-create "*edice!*"))
     (unless (eq major-mode 'edice-mode)
       (edice-mode))
