@@ -1,7 +1,7 @@
 # Installation and usage
 
 Just `(require 'edice)` and start with `M-x edice-roll`. Numbers keys
-in `edice-mode` roll that number of nice.
+in `edice-mode` roll that number of dice.
 
 [![Screenshot][ss]][citadel]
 
